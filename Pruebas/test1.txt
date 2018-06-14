@@ -1,0 +1,1 @@
+muestra la luminosidad y la temperatura.

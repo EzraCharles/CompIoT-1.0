@@ -1,0 +1,2 @@
+si el PH es_menor_que 6, entonces encender calor.
+si la luminosidad es_menor_que 100, entonces encender focos. si_no entonces apagar focos.

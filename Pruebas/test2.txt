@@ -1,0 +1,1 @@
+mientras la humedad_relativa es_menor_que 10, entonces encender aspersor.

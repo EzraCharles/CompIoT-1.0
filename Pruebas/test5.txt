@@ -1,0 +1,2 @@
+el PH igual_a 10.
+mientras el PH es_menor_que 8, entonces encender flujo.

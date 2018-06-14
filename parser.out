@@ -1,0 +1,927 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> planta
+Rule 2     planta -> ejecucion
+Rule 3     planta -> condicional
+Rule 4     planta -> iterativo
+Rule 5     planta -> entrada
+Rule 6     planta -> salida
+Rule 7     planta -> lectura
+Rule 8     lectura -> LEER ARTICULO ATRIBUTO PUNTO planta
+Rule 9     planta -> empty
+Rule 10    ejecucion -> P_ACCION ACTUADOR PUNTO planta
+Rule 11    iterativo -> MIENTRAS ARTICULO ATRIBUTO OC NUMERO COMA ENTONCES planta
+Rule 12    condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta
+Rule 13    condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta
+Rule 14    entrada -> asignacion
+Rule 15    entrada -> edicion
+Rule 16    salida -> monitoreo
+Rule 17    asignacion -> ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+Rule 18    edicion -> MODIFICAR ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+Rule 19    monitoreo -> MUESTRA ARTICULO ATRIBUTO rec
+Rule 20    rec -> COMA ARTICULO ATRIBUTO rec
+Rule 21    rec -> OL ARTICULO ATRIBUTO PUNTO planta
+Rule 22    empty -> <empty>
+
+Terminals, with rules where they appear
+
+ACTUADOR             : 10
+ARTICULO             : 8 11 12 13 17 18 19 20 21
+ASIG                 : 17 18
+ATRIBUTO             : 8 11 12 13 17 18 19 20 21
+COMA                 : 11 12 12 13 20
+ENTONCES             : 11 12 12 13
+LEER                 : 8
+MIENTRAS             : 11
+MODIFICAR            : 18
+MUESTRA              : 19
+NUMERO               : 11 12 13 17 18
+OC                   : 11
+OL                   : 12 13 21
+PUNTO                : 8 10 17 18 21
+P_ACCION             : 10
+SI                   : 12 13
+SI_NO                : 12
+error                : 
+
+Nonterminals, with rules where they appear
+
+asignacion           : 14
+condicional          : 3
+edicion              : 15
+ejecucion            : 2
+empty                : 9
+entrada              : 5
+iterativo            : 4
+lectura              : 7
+monitoreo            : 16
+planta               : 1 8 10 11 12 12 13 17 18 21
+programa             : 0
+rec                  : 19 20
+salida               : 6
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . planta
+    (2) planta -> . ejecucion
+    (3) planta -> . condicional
+    (4) planta -> . iterativo
+    (5) planta -> . entrada
+    (6) planta -> . salida
+    (7) planta -> . lectura
+    (9) planta -> . empty
+    (10) ejecucion -> . P_ACCION ACTUADOR PUNTO planta
+    (12) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta
+    (13) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta
+    (11) iterativo -> . MIENTRAS ARTICULO ATRIBUTO OC NUMERO COMA ENTONCES planta
+    (14) entrada -> . asignacion
+    (15) entrada -> . edicion
+    (16) salida -> . monitoreo
+    (8) lectura -> . LEER ARTICULO ATRIBUTO PUNTO planta
+    (22) empty -> .
+    (17) asignacion -> . ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (18) edicion -> . MODIFICAR ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (19) monitoreo -> . MUESTRA ARTICULO ATRIBUTO rec
+
+    P_ACCION        shift and go to state 10
+    SI              shift and go to state 11
+    MIENTRAS        shift and go to state 13
+    LEER            shift and go to state 17
+    $end            reduce using rule 22 (empty -> .)
+    ARTICULO        shift and go to state 12
+    MODIFICAR       shift and go to state 18
+    MUESTRA         shift and go to state 19
+
+    programa                       shift and go to state 1
+    planta                         shift and go to state 2
+    ejecucion                      shift and go to state 3
+    condicional                    shift and go to state 4
+    iterativo                      shift and go to state 5
+    entrada                        shift and go to state 6
+    salida                         shift and go to state 7
+    lectura                        shift and go to state 8
+    empty                          shift and go to state 9
+    asignacion                     shift and go to state 14
+    edicion                        shift and go to state 15
+    monitoreo                      shift and go to state 16
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> planta .
+
+    $end            reduce using rule 1 (programa -> planta .)
+
+
+state 3
+
+    (2) planta -> ejecucion .
+
+    $end            reduce using rule 2 (planta -> ejecucion .)
+    SI_NO           reduce using rule 2 (planta -> ejecucion .)
+
+
+state 4
+
+    (3) planta -> condicional .
+
+    $end            reduce using rule 3 (planta -> condicional .)
+    SI_NO           reduce using rule 3 (planta -> condicional .)
+
+
+state 5
+
+    (4) planta -> iterativo .
+
+    $end            reduce using rule 4 (planta -> iterativo .)
+    SI_NO           reduce using rule 4 (planta -> iterativo .)
+
+
+state 6
+
+    (5) planta -> entrada .
+
+    $end            reduce using rule 5 (planta -> entrada .)
+    SI_NO           reduce using rule 5 (planta -> entrada .)
+
+
+state 7
+
+    (6) planta -> salida .
+
+    $end            reduce using rule 6 (planta -> salida .)
+    SI_NO           reduce using rule 6 (planta -> salida .)
+
+
+state 8
+
+    (7) planta -> lectura .
+
+    $end            reduce using rule 7 (planta -> lectura .)
+    SI_NO           reduce using rule 7 (planta -> lectura .)
+
+
+state 9
+
+    (9) planta -> empty .
+
+    $end            reduce using rule 9 (planta -> empty .)
+    SI_NO           reduce using rule 9 (planta -> empty .)
+
+
+state 10
+
+    (10) ejecucion -> P_ACCION . ACTUADOR PUNTO planta
+
+    ACTUADOR        shift and go to state 20
+
+
+state 11
+
+    (12) condicional -> SI . ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta
+    (13) condicional -> SI . ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta
+
+    ARTICULO        shift and go to state 21
+
+
+state 12
+
+    (17) asignacion -> ARTICULO . ATRIBUTO ASIG NUMERO PUNTO planta
+
+    ATRIBUTO        shift and go to state 22
+
+
+state 13
+
+    (11) iterativo -> MIENTRAS . ARTICULO ATRIBUTO OC NUMERO COMA ENTONCES planta
+
+    ARTICULO        shift and go to state 23
+
+
+state 14
+
+    (14) entrada -> asignacion .
+
+    $end            reduce using rule 14 (entrada -> asignacion .)
+    SI_NO           reduce using rule 14 (entrada -> asignacion .)
+
+
+state 15
+
+    (15) entrada -> edicion .
+
+    $end            reduce using rule 15 (entrada -> edicion .)
+    SI_NO           reduce using rule 15 (entrada -> edicion .)
+
+
+state 16
+
+    (16) salida -> monitoreo .
+
+    $end            reduce using rule 16 (salida -> monitoreo .)
+    SI_NO           reduce using rule 16 (salida -> monitoreo .)
+
+
+state 17
+
+    (8) lectura -> LEER . ARTICULO ATRIBUTO PUNTO planta
+
+    ARTICULO        shift and go to state 24
+
+
+state 18
+
+    (18) edicion -> MODIFICAR . ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+
+    ARTICULO        shift and go to state 25
+
+
+state 19
+
+    (19) monitoreo -> MUESTRA . ARTICULO ATRIBUTO rec
+
+    ARTICULO        shift and go to state 26
+
+
+state 20
+
+    (10) ejecucion -> P_ACCION ACTUADOR . PUNTO planta
+
+    PUNTO           shift and go to state 27
+
+
+state 21
+
+    (12) condicional -> SI ARTICULO . ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta
+    (13) condicional -> SI ARTICULO . ATRIBUTO OL NUMERO COMA ENTONCES planta
+
+    ATRIBUTO        shift and go to state 28
+
+
+state 22
+
+    (17) asignacion -> ARTICULO ATRIBUTO . ASIG NUMERO PUNTO planta
+
+    ASIG            shift and go to state 29
+
+
+state 23
+
+    (11) iterativo -> MIENTRAS ARTICULO . ATRIBUTO OC NUMERO COMA ENTONCES planta
+
+    ATRIBUTO        shift and go to state 30
+
+
+state 24
+
+    (8) lectura -> LEER ARTICULO . ATRIBUTO PUNTO planta
+
+    ATRIBUTO        shift and go to state 31
+
+
+state 25
+
+    (18) edicion -> MODIFICAR ARTICULO . ATRIBUTO ASIG NUMERO PUNTO planta
+
+    ATRIBUTO        shift and go to state 32
+
+
+state 26
+
+    (19) monitoreo -> MUESTRA ARTICULO . ATRIBUTO rec
+
+    ATRIBUTO        shift and go to state 33
+
+
+state 27
+
+    (10) ejecucion -> P_ACCION ACTUADOR PUNTO . planta
+    (2) planta -> . ejecucion
+    (3) planta -> . condicional
+    (4) planta -> . iterativo
+    (5) planta -> . entrada
+    (6) planta -> . salida
+    (7) planta -> . lectura
+    (9) planta -> . empty
+    (10) ejecucion -> . P_ACCION ACTUADOR PUNTO planta
+    (12) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta
+    (13) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta
+    (11) iterativo -> . MIENTRAS ARTICULO ATRIBUTO OC NUMERO COMA ENTONCES planta
+    (14) entrada -> . asignacion
+    (15) entrada -> . edicion
+    (16) salida -> . monitoreo
+    (8) lectura -> . LEER ARTICULO ATRIBUTO PUNTO planta
+    (22) empty -> .
+    (17) asignacion -> . ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (18) edicion -> . MODIFICAR ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (19) monitoreo -> . MUESTRA ARTICULO ATRIBUTO rec
+
+    P_ACCION        shift and go to state 10
+    SI              shift and go to state 11
+    MIENTRAS        shift and go to state 13
+    LEER            shift and go to state 17
+    $end            reduce using rule 22 (empty -> .)
+    SI_NO           reduce using rule 22 (empty -> .)
+    ARTICULO        shift and go to state 12
+    MODIFICAR       shift and go to state 18
+    MUESTRA         shift and go to state 19
+
+    planta                         shift and go to state 34
+    ejecucion                      shift and go to state 3
+    condicional                    shift and go to state 4
+    iterativo                      shift and go to state 5
+    entrada                        shift and go to state 6
+    salida                         shift and go to state 7
+    lectura                        shift and go to state 8
+    empty                          shift and go to state 9
+    asignacion                     shift and go to state 14
+    edicion                        shift and go to state 15
+    monitoreo                      shift and go to state 16
+
+state 28
+
+    (12) condicional -> SI ARTICULO ATRIBUTO . OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta
+    (13) condicional -> SI ARTICULO ATRIBUTO . OL NUMERO COMA ENTONCES planta
+
+    OL              shift and go to state 35
+
+
+state 29
+
+    (17) asignacion -> ARTICULO ATRIBUTO ASIG . NUMERO PUNTO planta
+
+    NUMERO          shift and go to state 36
+
+
+state 30
+
+    (11) iterativo -> MIENTRAS ARTICULO ATRIBUTO . OC NUMERO COMA ENTONCES planta
+
+    OC              shift and go to state 37
+
+
+state 31
+
+    (8) lectura -> LEER ARTICULO ATRIBUTO . PUNTO planta
+
+    PUNTO           shift and go to state 38
+
+
+state 32
+
+    (18) edicion -> MODIFICAR ARTICULO ATRIBUTO . ASIG NUMERO PUNTO planta
+
+    ASIG            shift and go to state 39
+
+
+state 33
+
+    (19) monitoreo -> MUESTRA ARTICULO ATRIBUTO . rec
+    (20) rec -> . COMA ARTICULO ATRIBUTO rec
+    (21) rec -> . OL ARTICULO ATRIBUTO PUNTO planta
+
+    COMA            shift and go to state 41
+    OL              shift and go to state 42
+
+    rec                            shift and go to state 40
+
+state 34
+
+    (10) ejecucion -> P_ACCION ACTUADOR PUNTO planta .
+
+    $end            reduce using rule 10 (ejecucion -> P_ACCION ACTUADOR PUNTO planta .)
+    SI_NO           reduce using rule 10 (ejecucion -> P_ACCION ACTUADOR PUNTO planta .)
+
+
+state 35
+
+    (12) condicional -> SI ARTICULO ATRIBUTO OL . NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta
+    (13) condicional -> SI ARTICULO ATRIBUTO OL . NUMERO COMA ENTONCES planta
+
+    NUMERO          shift and go to state 43
+
+
+state 36
+
+    (17) asignacion -> ARTICULO ATRIBUTO ASIG NUMERO . PUNTO planta
+
+    PUNTO           shift and go to state 44
+
+
+state 37
+
+    (11) iterativo -> MIENTRAS ARTICULO ATRIBUTO OC . NUMERO COMA ENTONCES planta
+
+    NUMERO          shift and go to state 45
+
+
+state 38
+
+    (8) lectura -> LEER ARTICULO ATRIBUTO PUNTO . planta
+    (2) planta -> . ejecucion
+    (3) planta -> . condicional
+    (4) planta -> . iterativo
+    (5) planta -> . entrada
+    (6) planta -> . salida
+    (7) planta -> . lectura
+    (9) planta -> . empty
+    (10) ejecucion -> . P_ACCION ACTUADOR PUNTO planta
+    (12) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta
+    (13) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta
+    (11) iterativo -> . MIENTRAS ARTICULO ATRIBUTO OC NUMERO COMA ENTONCES planta
+    (14) entrada -> . asignacion
+    (15) entrada -> . edicion
+    (16) salida -> . monitoreo
+    (8) lectura -> . LEER ARTICULO ATRIBUTO PUNTO planta
+    (22) empty -> .
+    (17) asignacion -> . ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (18) edicion -> . MODIFICAR ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (19) monitoreo -> . MUESTRA ARTICULO ATRIBUTO rec
+
+    P_ACCION        shift and go to state 10
+    SI              shift and go to state 11
+    MIENTRAS        shift and go to state 13
+    LEER            shift and go to state 17
+    $end            reduce using rule 22 (empty -> .)
+    SI_NO           reduce using rule 22 (empty -> .)
+    ARTICULO        shift and go to state 12
+    MODIFICAR       shift and go to state 18
+    MUESTRA         shift and go to state 19
+
+    planta                         shift and go to state 46
+    ejecucion                      shift and go to state 3
+    condicional                    shift and go to state 4
+    iterativo                      shift and go to state 5
+    entrada                        shift and go to state 6
+    salida                         shift and go to state 7
+    lectura                        shift and go to state 8
+    empty                          shift and go to state 9
+    asignacion                     shift and go to state 14
+    edicion                        shift and go to state 15
+    monitoreo                      shift and go to state 16
+
+state 39
+
+    (18) edicion -> MODIFICAR ARTICULO ATRIBUTO ASIG . NUMERO PUNTO planta
+
+    NUMERO          shift and go to state 47
+
+
+state 40
+
+    (19) monitoreo -> MUESTRA ARTICULO ATRIBUTO rec .
+
+    $end            reduce using rule 19 (monitoreo -> MUESTRA ARTICULO ATRIBUTO rec .)
+    SI_NO           reduce using rule 19 (monitoreo -> MUESTRA ARTICULO ATRIBUTO rec .)
+
+
+state 41
+
+    (20) rec -> COMA . ARTICULO ATRIBUTO rec
+
+    ARTICULO        shift and go to state 48
+
+
+state 42
+
+    (21) rec -> OL . ARTICULO ATRIBUTO PUNTO planta
+
+    ARTICULO        shift and go to state 49
+
+
+state 43
+
+    (12) condicional -> SI ARTICULO ATRIBUTO OL NUMERO . COMA ENTONCES planta SI_NO COMA ENTONCES planta
+    (13) condicional -> SI ARTICULO ATRIBUTO OL NUMERO . COMA ENTONCES planta
+
+    COMA            shift and go to state 50
+
+
+state 44
+
+    (17) asignacion -> ARTICULO ATRIBUTO ASIG NUMERO PUNTO . planta
+    (2) planta -> . ejecucion
+    (3) planta -> . condicional
+    (4) planta -> . iterativo
+    (5) planta -> . entrada
+    (6) planta -> . salida
+    (7) planta -> . lectura
+    (9) planta -> . empty
+    (10) ejecucion -> . P_ACCION ACTUADOR PUNTO planta
+    (12) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta
+    (13) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta
+    (11) iterativo -> . MIENTRAS ARTICULO ATRIBUTO OC NUMERO COMA ENTONCES planta
+    (14) entrada -> . asignacion
+    (15) entrada -> . edicion
+    (16) salida -> . monitoreo
+    (8) lectura -> . LEER ARTICULO ATRIBUTO PUNTO planta
+    (22) empty -> .
+    (17) asignacion -> . ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (18) edicion -> . MODIFICAR ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (19) monitoreo -> . MUESTRA ARTICULO ATRIBUTO rec
+
+    P_ACCION        shift and go to state 10
+    SI              shift and go to state 11
+    MIENTRAS        shift and go to state 13
+    LEER            shift and go to state 17
+    $end            reduce using rule 22 (empty -> .)
+    SI_NO           reduce using rule 22 (empty -> .)
+    ARTICULO        shift and go to state 12
+    MODIFICAR       shift and go to state 18
+    MUESTRA         shift and go to state 19
+
+    planta                         shift and go to state 51
+    ejecucion                      shift and go to state 3
+    condicional                    shift and go to state 4
+    iterativo                      shift and go to state 5
+    entrada                        shift and go to state 6
+    salida                         shift and go to state 7
+    lectura                        shift and go to state 8
+    empty                          shift and go to state 9
+    asignacion                     shift and go to state 14
+    edicion                        shift and go to state 15
+    monitoreo                      shift and go to state 16
+
+state 45
+
+    (11) iterativo -> MIENTRAS ARTICULO ATRIBUTO OC NUMERO . COMA ENTONCES planta
+
+    COMA            shift and go to state 52
+
+
+state 46
+
+    (8) lectura -> LEER ARTICULO ATRIBUTO PUNTO planta .
+
+    $end            reduce using rule 8 (lectura -> LEER ARTICULO ATRIBUTO PUNTO planta .)
+    SI_NO           reduce using rule 8 (lectura -> LEER ARTICULO ATRIBUTO PUNTO planta .)
+
+
+state 47
+
+    (18) edicion -> MODIFICAR ARTICULO ATRIBUTO ASIG NUMERO . PUNTO planta
+
+    PUNTO           shift and go to state 53
+
+
+state 48
+
+    (20) rec -> COMA ARTICULO . ATRIBUTO rec
+
+    ATRIBUTO        shift and go to state 54
+
+
+state 49
+
+    (21) rec -> OL ARTICULO . ATRIBUTO PUNTO planta
+
+    ATRIBUTO        shift and go to state 55
+
+
+state 50
+
+    (12) condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA . ENTONCES planta SI_NO COMA ENTONCES planta
+    (13) condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA . ENTONCES planta
+
+    ENTONCES        shift and go to state 56
+
+
+state 51
+
+    (17) asignacion -> ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta .
+
+    $end            reduce using rule 17 (asignacion -> ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta .)
+    SI_NO           reduce using rule 17 (asignacion -> ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta .)
+
+
+state 52
+
+    (11) iterativo -> MIENTRAS ARTICULO ATRIBUTO OC NUMERO COMA . ENTONCES planta
+
+    ENTONCES        shift and go to state 57
+
+
+state 53
+
+    (18) edicion -> MODIFICAR ARTICULO ATRIBUTO ASIG NUMERO PUNTO . planta
+    (2) planta -> . ejecucion
+    (3) planta -> . condicional
+    (4) planta -> . iterativo
+    (5) planta -> . entrada
+    (6) planta -> . salida
+    (7) planta -> . lectura
+    (9) planta -> . empty
+    (10) ejecucion -> . P_ACCION ACTUADOR PUNTO planta
+    (12) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta
+    (13) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta
+    (11) iterativo -> . MIENTRAS ARTICULO ATRIBUTO OC NUMERO COMA ENTONCES planta
+    (14) entrada -> . asignacion
+    (15) entrada -> . edicion
+    (16) salida -> . monitoreo
+    (8) lectura -> . LEER ARTICULO ATRIBUTO PUNTO planta
+    (22) empty -> .
+    (17) asignacion -> . ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (18) edicion -> . MODIFICAR ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (19) monitoreo -> . MUESTRA ARTICULO ATRIBUTO rec
+
+    P_ACCION        shift and go to state 10
+    SI              shift and go to state 11
+    MIENTRAS        shift and go to state 13
+    LEER            shift and go to state 17
+    $end            reduce using rule 22 (empty -> .)
+    SI_NO           reduce using rule 22 (empty -> .)
+    ARTICULO        shift and go to state 12
+    MODIFICAR       shift and go to state 18
+    MUESTRA         shift and go to state 19
+
+    planta                         shift and go to state 58
+    ejecucion                      shift and go to state 3
+    condicional                    shift and go to state 4
+    iterativo                      shift and go to state 5
+    entrada                        shift and go to state 6
+    salida                         shift and go to state 7
+    lectura                        shift and go to state 8
+    empty                          shift and go to state 9
+    asignacion                     shift and go to state 14
+    edicion                        shift and go to state 15
+    monitoreo                      shift and go to state 16
+
+state 54
+
+    (20) rec -> COMA ARTICULO ATRIBUTO . rec
+    (20) rec -> . COMA ARTICULO ATRIBUTO rec
+    (21) rec -> . OL ARTICULO ATRIBUTO PUNTO planta
+
+    COMA            shift and go to state 41
+    OL              shift and go to state 42
+
+    rec                            shift and go to state 59
+
+state 55
+
+    (21) rec -> OL ARTICULO ATRIBUTO . PUNTO planta
+
+    PUNTO           shift and go to state 60
+
+
+state 56
+
+    (12) condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES . planta SI_NO COMA ENTONCES planta
+    (13) condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES . planta
+    (2) planta -> . ejecucion
+    (3) planta -> . condicional
+    (4) planta -> . iterativo
+    (5) planta -> . entrada
+    (6) planta -> . salida
+    (7) planta -> . lectura
+    (9) planta -> . empty
+    (10) ejecucion -> . P_ACCION ACTUADOR PUNTO planta
+    (12) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta
+    (13) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta
+    (11) iterativo -> . MIENTRAS ARTICULO ATRIBUTO OC NUMERO COMA ENTONCES planta
+    (14) entrada -> . asignacion
+    (15) entrada -> . edicion
+    (16) salida -> . monitoreo
+    (8) lectura -> . LEER ARTICULO ATRIBUTO PUNTO planta
+    (22) empty -> .
+    (17) asignacion -> . ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (18) edicion -> . MODIFICAR ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (19) monitoreo -> . MUESTRA ARTICULO ATRIBUTO rec
+
+    P_ACCION        shift and go to state 10
+    SI              shift and go to state 11
+    MIENTRAS        shift and go to state 13
+    LEER            shift and go to state 17
+    $end            reduce using rule 22 (empty -> .)
+    SI_NO           reduce using rule 22 (empty -> .)
+    ARTICULO        shift and go to state 12
+    MODIFICAR       shift and go to state 18
+    MUESTRA         shift and go to state 19
+
+    planta                         shift and go to state 61
+    ejecucion                      shift and go to state 3
+    condicional                    shift and go to state 4
+    iterativo                      shift and go to state 5
+    entrada                        shift and go to state 6
+    salida                         shift and go to state 7
+    lectura                        shift and go to state 8
+    empty                          shift and go to state 9
+    asignacion                     shift and go to state 14
+    edicion                        shift and go to state 15
+    monitoreo                      shift and go to state 16
+
+state 57
+
+    (11) iterativo -> MIENTRAS ARTICULO ATRIBUTO OC NUMERO COMA ENTONCES . planta
+    (2) planta -> . ejecucion
+    (3) planta -> . condicional
+    (4) planta -> . iterativo
+    (5) planta -> . entrada
+    (6) planta -> . salida
+    (7) planta -> . lectura
+    (9) planta -> . empty
+    (10) ejecucion -> . P_ACCION ACTUADOR PUNTO planta
+    (12) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta
+    (13) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta
+    (11) iterativo -> . MIENTRAS ARTICULO ATRIBUTO OC NUMERO COMA ENTONCES planta
+    (14) entrada -> . asignacion
+    (15) entrada -> . edicion
+    (16) salida -> . monitoreo
+    (8) lectura -> . LEER ARTICULO ATRIBUTO PUNTO planta
+    (22) empty -> .
+    (17) asignacion -> . ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (18) edicion -> . MODIFICAR ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (19) monitoreo -> . MUESTRA ARTICULO ATRIBUTO rec
+
+    P_ACCION        shift and go to state 10
+    SI              shift and go to state 11
+    MIENTRAS        shift and go to state 13
+    LEER            shift and go to state 17
+    $end            reduce using rule 22 (empty -> .)
+    SI_NO           reduce using rule 22 (empty -> .)
+    ARTICULO        shift and go to state 12
+    MODIFICAR       shift and go to state 18
+    MUESTRA         shift and go to state 19
+
+    planta                         shift and go to state 62
+    ejecucion                      shift and go to state 3
+    condicional                    shift and go to state 4
+    iterativo                      shift and go to state 5
+    entrada                        shift and go to state 6
+    salida                         shift and go to state 7
+    lectura                        shift and go to state 8
+    empty                          shift and go to state 9
+    asignacion                     shift and go to state 14
+    edicion                        shift and go to state 15
+    monitoreo                      shift and go to state 16
+
+state 58
+
+    (18) edicion -> MODIFICAR ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta .
+
+    $end            reduce using rule 18 (edicion -> MODIFICAR ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta .)
+    SI_NO           reduce using rule 18 (edicion -> MODIFICAR ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta .)
+
+
+state 59
+
+    (20) rec -> COMA ARTICULO ATRIBUTO rec .
+
+    $end            reduce using rule 20 (rec -> COMA ARTICULO ATRIBUTO rec .)
+    SI_NO           reduce using rule 20 (rec -> COMA ARTICULO ATRIBUTO rec .)
+
+
+state 60
+
+    (21) rec -> OL ARTICULO ATRIBUTO PUNTO . planta
+    (2) planta -> . ejecucion
+    (3) planta -> . condicional
+    (4) planta -> . iterativo
+    (5) planta -> . entrada
+    (6) planta -> . salida
+    (7) planta -> . lectura
+    (9) planta -> . empty
+    (10) ejecucion -> . P_ACCION ACTUADOR PUNTO planta
+    (12) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta
+    (13) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta
+    (11) iterativo -> . MIENTRAS ARTICULO ATRIBUTO OC NUMERO COMA ENTONCES planta
+    (14) entrada -> . asignacion
+    (15) entrada -> . edicion
+    (16) salida -> . monitoreo
+    (8) lectura -> . LEER ARTICULO ATRIBUTO PUNTO planta
+    (22) empty -> .
+    (17) asignacion -> . ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (18) edicion -> . MODIFICAR ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (19) monitoreo -> . MUESTRA ARTICULO ATRIBUTO rec
+
+    P_ACCION        shift and go to state 10
+    SI              shift and go to state 11
+    MIENTRAS        shift and go to state 13
+    LEER            shift and go to state 17
+    $end            reduce using rule 22 (empty -> .)
+    SI_NO           reduce using rule 22 (empty -> .)
+    ARTICULO        shift and go to state 12
+    MODIFICAR       shift and go to state 18
+    MUESTRA         shift and go to state 19
+
+    planta                         shift and go to state 63
+    ejecucion                      shift and go to state 3
+    condicional                    shift and go to state 4
+    iterativo                      shift and go to state 5
+    entrada                        shift and go to state 6
+    salida                         shift and go to state 7
+    lectura                        shift and go to state 8
+    empty                          shift and go to state 9
+    asignacion                     shift and go to state 14
+    edicion                        shift and go to state 15
+    monitoreo                      shift and go to state 16
+
+state 61
+
+    (12) condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta . SI_NO COMA ENTONCES planta
+    (13) condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta .
+
+  ! shift/reduce conflict for SI_NO resolved as shift
+    SI_NO           shift and go to state 64
+    $end            reduce using rule 13 (condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta .)
+
+  ! SI_NO           [ reduce using rule 13 (condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta .) ]
+
+
+state 62
+
+    (11) iterativo -> MIENTRAS ARTICULO ATRIBUTO OC NUMERO COMA ENTONCES planta .
+
+    $end            reduce using rule 11 (iterativo -> MIENTRAS ARTICULO ATRIBUTO OC NUMERO COMA ENTONCES planta .)
+    SI_NO           reduce using rule 11 (iterativo -> MIENTRAS ARTICULO ATRIBUTO OC NUMERO COMA ENTONCES planta .)
+
+
+state 63
+
+    (21) rec -> OL ARTICULO ATRIBUTO PUNTO planta .
+
+    $end            reduce using rule 21 (rec -> OL ARTICULO ATRIBUTO PUNTO planta .)
+    SI_NO           reduce using rule 21 (rec -> OL ARTICULO ATRIBUTO PUNTO planta .)
+
+
+state 64
+
+    (12) condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO . COMA ENTONCES planta
+
+    COMA            shift and go to state 65
+
+
+state 65
+
+    (12) condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA . ENTONCES planta
+
+    ENTONCES        shift and go to state 66
+
+
+state 66
+
+    (12) condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES . planta
+    (2) planta -> . ejecucion
+    (3) planta -> . condicional
+    (4) planta -> . iterativo
+    (5) planta -> . entrada
+    (6) planta -> . salida
+    (7) planta -> . lectura
+    (9) planta -> . empty
+    (10) ejecucion -> . P_ACCION ACTUADOR PUNTO planta
+    (12) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta
+    (13) condicional -> . SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta
+    (11) iterativo -> . MIENTRAS ARTICULO ATRIBUTO OC NUMERO COMA ENTONCES planta
+    (14) entrada -> . asignacion
+    (15) entrada -> . edicion
+    (16) salida -> . monitoreo
+    (8) lectura -> . LEER ARTICULO ATRIBUTO PUNTO planta
+    (22) empty -> .
+    (17) asignacion -> . ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (18) edicion -> . MODIFICAR ARTICULO ATRIBUTO ASIG NUMERO PUNTO planta
+    (19) monitoreo -> . MUESTRA ARTICULO ATRIBUTO rec
+
+    P_ACCION        shift and go to state 10
+    SI              shift and go to state 11
+    MIENTRAS        shift and go to state 13
+    LEER            shift and go to state 17
+    $end            reduce using rule 22 (empty -> .)
+    SI_NO           reduce using rule 22 (empty -> .)
+    ARTICULO        shift and go to state 12
+    MODIFICAR       shift and go to state 18
+    MUESTRA         shift and go to state 19
+
+    planta                         shift and go to state 67
+    ejecucion                      shift and go to state 3
+    condicional                    shift and go to state 4
+    iterativo                      shift and go to state 5
+    entrada                        shift and go to state 6
+    salida                         shift and go to state 7
+    lectura                        shift and go to state 8
+    empty                          shift and go to state 9
+    asignacion                     shift and go to state 14
+    edicion                        shift and go to state 15
+    monitoreo                      shift and go to state 16
+
+state 67
+
+    (12) condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta .
+
+    $end            reduce using rule 12 (condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta .)
+    SI_NO           reduce using rule 12 (condicional -> SI ARTICULO ATRIBUTO OL NUMERO COMA ENTONCES planta SI_NO COMA ENTONCES planta .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for SI_NO in state 61 resolved as shift

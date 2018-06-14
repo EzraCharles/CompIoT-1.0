@@ -1,0 +1,1 @@
+si el PH es_mayor_que 6, entonces encender bomba. si_no, entonces apagar bomba.

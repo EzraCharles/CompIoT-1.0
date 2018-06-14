@@ -1,0 +1,3 @@
+encender ventilador.
+encender focos.
+apagar aspersor.
