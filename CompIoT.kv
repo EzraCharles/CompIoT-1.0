@@ -1,0 +1,189 @@
+<LoadDialog>:
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+
+            Button:
+                text: "Load"
+                on_release: root.load(filechooser.path, filechooser.selection)
+
+<SaveDialog>:
+    text_input: text_input
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: "vertical"
+        FileChooserListView:
+            id: filechooser
+            on_selection: text_input.text = self.selection and self.selection[0] or ''
+
+        TextInput:
+            id: text_input
+            size_hint_y: None
+            height: 30
+            multiline: False
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Cancel"
+                on_release: root.cancel()
+
+            Button:
+                text: "Save"
+                on_release: root.save(filechooser.path, text_input.text)
+
+<Test>:
+    size_hint: 1, 1
+    pos_hint: {'center_x': .5, 'center_y': .5}
+    do_default_tab: False
+    text_input: text_input
+    text_error: text_error
+    table_out: table_out
+    text_graph: text_graph
+    text_grammar: text_grammar
+    insert_image: insert_image
+    #button_refresh: button_refresh
+
+    TabbedPanelItem:
+        text: 'Codigo'
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 10
+            padding: 10
+            TextInput:
+                id: text_input
+                focus: True
+                hint_text: "Ingresa tu codigo aqui..."
+                size_hint: 1, .6
+            RstDocument:
+                background_color: 1, 1, 1, .7
+                id: text_error
+                size_hint: 1, .2
+                #text: text_input.text
+                show_errors: True
+            BoxLayout:
+                size_hint: 1, .1
+                Button:
+                    text: "Compilar"
+                    size_hint: .9, 1
+                    on_press: root.compile_code()
+                Button:
+                    background_normal: 'save.png'
+                    background_down: 'save_dn.png'
+                    size_hint_x: .1
+                    width: 30
+                    height: 30
+                    on_release: root.show_save()
+                Button:
+                    background_normal: 'open.png'
+                    background_down: 'open_dn.png'
+                    size_hint_x: .1
+                    width: 30
+                    height: 30
+                    on_release: root.show_load()
+                Button:
+                    background_normal: 'delete.png'
+                    background_down: 'delete_dn.png'
+                    size_hint_x: .1
+                    width: 30
+                    height: 30
+                    on_release: root.earase_code()
+
+    TabbedPanelItem:
+        text: 'Lexico'
+
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: (0, 0, 0, 0)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            RecycleView:
+                id: table_out
+                viewclass: 'SelectableLabel'
+                SelectableRecycleGridLayout:
+                    default_size: None, dp(56)
+                    default_size_hint: 1, None
+                    size_hint_y: None
+                    height: self.minimum_height
+                    orientation: 'vertical'
+                    multiselect: True
+                    touch_multiselect: True
+                    cols: 4
+
+    TabbedPanelItem:
+        text: 'Sintactico'
+        id: text_graph
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 10
+            padding: 10
+            canvas.before:
+                Color:
+                    rgba: (0, 0, 0, 0)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            TextInput:
+                id: text_graph
+                focus: True
+                hint_text: "Compila primero para obtener el codigo del arbol de derivacion."
+                size_hint: 1, .9
+                readonly: "readonly"
+            Button:
+                text: "Copiar"
+                size_hint: 1, .1
+                on_release: root.addToClipBoard()
+
+    TabbedPanelItem:
+        text: 'Gramatica'
+        id: text_grammar
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 10
+            padding: 10
+            canvas.before:
+                Color:
+                    rgba: (0, 0, 0, 0)
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            ScrollView:
+                id: scrlv
+                TextInput:
+                    id: text_grammar
+                    focus: True
+                    size_hint: 1, None
+                    height: max(self.minimum_height, scrlv.height)
+                    readonly: "readonly"
+
+    TabbedPanelItem:
+        text: 'Arbol de \n derivacion'
+        BoxLayout:
+            orientation: "vertical"
+            spacing: 10
+            padding: 10
+            Image:
+                id: insert_image
+                keep_data: False
+                source: "icon.png"
+            #Button:
+                #id: button_refresh
+                #text: "Actualizar"
+                #size_hint: 1, .1
+                #on_press: root.refresh()
+    TabbedPanelItem:
+        text: 'ASM'
